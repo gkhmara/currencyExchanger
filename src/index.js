@@ -12,22 +12,23 @@ function clearFields() {
 
 
 function getElements(response, keyword, currency) {
-  for (let i = 0; i < 1; i++) {
   if (response.result === "success") {
     let output = keyword * response.conversion_rates[currency];
     $('.showResults').text(output);
-    $('.showErrors').text(`${response.result}`);
-  } else {
-    $('.showErrors').text(`There was an error processing your request: ${response.result}`);
+      if (response.conversion_rates[currency] === undefined) {
+        $('.showResults').text('The selection you have made is not a valid currency. Please select another currency and try again.');
+      }
+  } else if (response.result === "error") {
+    $('.showResults').text(`There was an error processing your request: ${response['error-type']}`);
   }
-}}
+}
 
 $(document).ready(function() {
   $('#enterSearch').click(function() {
     const keyword = $('#searchKey').val();
     const currency = $("input:radio[name=currency]:checked").val();
     clearFields();
-    ExchangeRate.getBike()
+    ExchangeRate.getCurrency()
     .then(function(response) {
       getElements(response, keyword, currency);
     });
