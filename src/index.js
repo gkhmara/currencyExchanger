@@ -11,10 +11,10 @@ function clearFields() {
 }
 
 
-function getElements(response, keyword) {
+function getElements(response, keyword, currency) {
   for (let i = 0; i < 1; i++) {
-  if (response.conversion_rates['ZMW']) {
-    let output = keyword * response.conversion_rates['ZMW'];
+  if (response.conversion_rates[currency]) {
+    let output = keyword * response.conversion_rates[currency];
     $('.showResults').text(output);
   } else {
     $('.showErrors').text(`There was an error processing your request: ${response.message}`);
@@ -24,10 +24,11 @@ function getElements(response, keyword) {
 $(document).ready(function() {
   $('#enterSearch').click(function() {
     const keyword = $('#searchKey').val();
+    const currency = $("input:radio[name=currency]:checked").val();
     clearFields();
     ExchangeRate.getBike()
     .then(function(response) {
-      getElements(response, keyword);
+      getElements(response, keyword, currency);
     });
   });
 });
