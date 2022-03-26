@@ -13,11 +13,12 @@ function clearFields() {
 
 function getElements(response, keyword, currency) {
   for (let i = 0; i < 1; i++) {
-  if (response.conversion_rates[currency]) {
+  if (response.result === "success") {
     let output = keyword * response.conversion_rates[currency];
     $('.showResults').text(output);
+    $('.showErrors').text(`${response.result}`);
   } else {
-    $('.showErrors').text(`There was an error processing your request: ${response.message}`);
+    $('.showErrors').text(`There was an error processing your request: ${response.result}`);
   }
 }}
 
