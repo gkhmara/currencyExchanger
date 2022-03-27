@@ -5,7 +5,6 @@ import './css/styles.css';
 import ExchangeRate from './js/business.js';
 
 function clearFields() {
-  $('.showImages').text("");
   $('.showResults').text("");
 }
 
