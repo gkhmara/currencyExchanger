@@ -16,7 +16,7 @@ function getElements(response, keyword, currency) {
     if (response.conversion_rates[currency] === undefined) {
       $('.showResults').text('The selection you have made is not a valid currency. Please select another currency and try again.');
     }
-  } else if (response.result === "error") {
+  } else {
     $('.showResults').text(`There was an error processing your request: ${response['error-type']}`);
   }
 }
