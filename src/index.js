@@ -9,9 +9,9 @@ function clearFields() {
   $('.showResults').text("");
 }
 
-function getElements(response, keyword, currency) {
+function getElements(response, userInput, currency) {
   if (response.result === "success") {
-    let output = keyword * response.conversion_rates[currency];
+    let output = userInput * response.conversion_rates[currency];
     $('.showResults').text(output + " " + $("input:radio[name=currency]:checked").val());
     if (response.conversion_rates[currency] === undefined) {
       $('.showResults').text('The selection you have made is not a valid currency. Please select another currency and try again.');
@@ -23,12 +23,12 @@ function getElements(response, keyword, currency) {
 
 $(document).ready(function() {
   $('#enterSearch').click(function() {
-    const keyword = $('#searchKey').val();
+    const userInput = $('#userInput').val();
     const currency = $("input:radio[name=currency]:checked").val();
     clearFields();
     ExchangeRate.getCurrency()
       .then(function(response) {
-        getElements(response, keyword, currency);
+        getElements(response, userInput, currency);
       });
   });
 });
