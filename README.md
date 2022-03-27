@@ -15,7 +15,7 @@
 
 ## Description
 
-This site will take in a US dollar amount and convert it to one of the five availible currencies.
+This site will take in a US dollar amount and convert it to one of the five available currencies.
 
 ## Setup/Installation Requirements
 
