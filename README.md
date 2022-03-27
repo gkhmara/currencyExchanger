@@ -2,7 +2,7 @@
 
 #### Greg Khmara
 
-#### This is a website allows a user to input an US dollar amount and exchange it to a different currency.
+#### This is a website allows a user to input an US dollar amount and convert it to a different currency.
 
 ## Technologies Used
 
